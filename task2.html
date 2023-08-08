@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2</title>
+    <style>
+      body {
+        background-color: lightgray;
+        font-size: 20px;
+        font-family: 'Times New Roman', Times, serif;
+      }
+      .header {
+        max-width: 1425px;
+        margin: 0 auto;
+        background-color: rgb(31, 199, 131);
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 30px;
+      }
+      .header > p {
+        font-size: 24px;
+      }
+      .content {
+        max-width: 950px;
+        margin: 10px auto;
+        background-color: rgb(31, 199, 131);
+        border-radius: 10px;
+        text-align: center;
+        padding: 5px 0;
+        font-size: 24px;
+      }
+
+      .btn {
+        max-width: 300px;
+        margin: 30px auto;
+      }
+      .button {
+        display: block;
+        text-decoration: none;
+        color: black;
+        background-color: rgb(31, 199, 131);
+        margin: 15px 25px;
+        text-align: center;
+        font-size: 22px;
+        padding: 10px 20px;
+        border-radius: 7px;
+      }
+      .button:hover {
+        background-color: rgb(63, 112, 210);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div>Задача 1</div>
+      <p>
+        Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є
+        заєць і 0 в іншому випадку.
+      </p>
+    </div>
+    <div class="content">
+      <p>Відповідь до задачі:</p>
+      <script>
+        let shootingGallery = {
+          playingField: new Array(7),
+          addingTarget: function () {
+            this.playingField.fill(0)
+            let targets =
+              1 + Math.floor(Math.random() * this.playingField.length)
+            this.playingField[targets] = 1
+            return this.playingField
+          },
+          game: function () {
+            let shot = parseInt(prompt('Постріл (введіть від 1 до 7)'))
+            let shotCoordinates = shot - 1
+            for (let i = 0; i < this.playingField.length; i++) {
+              if (this.playingField[shotCoordinates] === 1) {
+                alert('Ви влучили!')
+                break
+              } else {
+                alert('Ви не влучили!')
+                break
+              }
+            }
+          },
+        }
+
+        document.write(`${shootingGallery.addingTarget()}`)
+        shootingGallery.game()
+      </script>
+    </div>
+    <div class="btn">
+      <a class="button" href="./index.html">На головну</a>
+    </div>
+  </body>
+</html>

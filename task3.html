@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 3</title>
+    <style>
+      body {
+        background-color: lightgray;
+        font-size: 20px;
+        font-family: 'Times New Roman', Times, serif;
+      }
+      .header {
+        max-width: 1425px;
+        margin: 0 auto;
+        background-color: rgb(31, 199, 131);
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 30px;
+      }
+      .header > p {
+        font-size: 24px;
+      }
+      .content {
+        max-width: 950px;
+        margin: 10px auto;
+        background-color: rgb(31, 199, 131);
+        border-radius: 10px;
+        text-align: center;
+        padding: 5px 0;
+        font-size: 24px;
+      }
+
+      .btn {
+        max-width: 300px;
+        margin: 30px auto;
+      }
+      .button {
+        display: block;
+        text-decoration: none;
+        color: black;
+        background-color: rgb(31, 199, 131);
+        margin: 15px 25px;
+        text-align: center;
+        font-size: 22px;
+        padding: 10px 20px;
+        border-radius: 7px;
+      }
+      .button:hover {
+        background-color: rgb(63, 112, 210);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div>Задача 2</div>
+      <p>Створити об’єкт «Авто».</p>
+    </div>
+    <div class="content">
+      <p>Відповідь до задачі:</p>
+      <script>
+        let auto = {
+          brand: 'Volkswagen',
+          maxValumeTank: 50,
+          amountFuel: 10,
+          numberSeats: 5,
+          numPassengers: 2,
+          fillUpTheCar: function () {
+            let liters = parseInt(
+              prompt('На скільки літрів бажаєте заправити авто?')
+            )
+            if (liters > this.maxValumeTank - this.amountFuel) {
+              alert(
+                'Кількість пального буде більше за ємність паливного баку. Введіть меншу кількість палива'
+              )
+              this.fillUpTheCar()
+            } else {
+              this.amountFuel += liters
+              document.write(
+                `Кількість пального становить: ${this.amountFuel}<br>`
+              )
+            }
+          },
+
+          showNumPassenger: function () {
+            document.write(`Кількість пасажирів: ${this.numPassengers}<br>`)
+          },
+          newPassengers: function () {
+            let newPass = parseInt(prompt('Скільки ще хочете взяти пасажирів?'))
+            if (newPass > this.numberSeats - this.numPassengers) {
+              alert('Пасажирів більше кількості місць')
+              this.newPassengers()
+            } else {
+              this.numPassengers += newPass
+              document.write(
+                `Всього пасажирів після посадки: ${this.numPassengers}<br>`
+              )
+            }
+          },
+          dropPassenger: function () {
+            let dropPass = parseInt(
+              prompt('Скільки хочете висадити пасажирів?')
+            )
+            if (dropPass > this.numberSeats) {
+              alert('Не можна, щоб в авто не було людей')
+              this.dropPassenger()
+            } else {
+              this.numPassengers -= dropPass
+              document.write(
+                `Кількість пасажирів після висадки: ${this.numPassengers}<br>`
+              )
+            }
+          },
+        }
+
+        auto.fillUpTheCar()
+        auto.showNumPassenger()
+        auto.newPassengers()
+        auto.dropPassenger()
+      </script>
+    </div>
+    <div class="btn">
+      <a class="button" href="./index.html">На головну</a>
+    </div>
+  </body>
+</html>
